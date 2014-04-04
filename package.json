@@ -3,6 +3,7 @@
   "description": "a simple browser based chat server",
   "version": "0.0.1",
   "dependencies": {
-    "express": "3.*"
+    "express": "3.*",
+    "socket.io": "*"
   }
 }
