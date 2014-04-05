@@ -3,7 +3,7 @@
 var $  = require('jquery');
 
 $(function(){
-  var socket = io.connect('http://localhost');
+  var socket = io.connect('http://http://chat.hobbitsynergy.com');
   $('#chat').on('submit', function(e){
     e.preventDefault();
     var message = $('#chat_text').val();
