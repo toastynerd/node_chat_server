@@ -11,7 +11,7 @@ $(function(){
     $('#chat_text').val('');
   });
   socket.on('message', function(data){
-    $('#chat_log').append(document.createTextNode(data.message);
+    $('#chat_log').append(document.createTextNode(data.message));
     $('#chat_log').append('</br>');
   });
 });
