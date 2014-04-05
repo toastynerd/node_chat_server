@@ -5,5 +5,15 @@
   "dependencies": {
     "express": "3.*",
     "socket.io": "*"
+  },
+  "devDependencies": {
+    "grunt": "*",
+    "browserify": "*",
+    "grunt-browserify": "*",
+    "debowerify": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-express-server": "*",
+    "grunt-contrib-watch": "*"
   }
 }
