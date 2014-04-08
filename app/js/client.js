@@ -1,9 +1,11 @@
 'use strict';
 
-var $  = require('jquery');
+var $   = require('jquery');
+var env = require('env');
 
 $(function(){
-  var socket = io.connect('http://chat.hobbitsynergy.com');
+  console.log(env.socket_server);
+  var socket = io.connect(env.socket_server);
   $('#chat').on('submit', function(e){
     e.preventDefault();
     var message = $('#chat_text').val();

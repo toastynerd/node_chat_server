@@ -33,6 +33,9 @@ module.exports = function(grunt) {
         src: ['app/js/*.js'],
         dest: 'build/client.js',
         options: {
+          alias: [
+            './config/client_test_env.js:env'
+          ],
           transform: ['debowerify'],
           debug: true
         }
