@@ -6,6 +6,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-express-server');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-sass');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -25,6 +26,16 @@ module.exports = function(grunt) {
         dest: 'build/',
         flatten: false,
         filter: 'isFile'
+      }
+    },
+
+    sass: {
+      dev: {
+        options: {
+          includePaths: ['app/scss/'],
+          sourceComments: 'map'
+        },
+        files: {'build/css/styles.css': 'app/scss/styles.scss' }
       }
     },
 
@@ -56,11 +67,11 @@ module.exports = function(grunt) {
 
     watch: {
       all: {
-        files: ['server.js', '**/*.js']
+        files: ['server.js', '**/*.js', '**/*.css', '**/*.scss']
       },
       express: {
-        files: ['server.js', 'app/**/*.js', 'app/*.html', 'app/css/*'],
-        tasks: ['clean:dev', 'copy:dev', 'browserify:dev', 'express:dev'],
+        files: ['server.js', 'app/**/*.js', 'app/*.html', 'app/css/*', 'app/scss/*'],
+        tasks: ['clean:dev', 'copy:dev','sass:dev', 'browserify:dev', 'express:dev'],
         options: {
           spawn: false
         }
@@ -68,7 +79,7 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('build:dev', ['clean:dev', 'copy:dev', 'browserify:dev']);
+  grunt.registerTask('build:dev', ['clean:dev', 'copy:dev', 'sass:dev', 'browserify:dev']);
   grunt.registerTask('build', ['build:dev']);
   grunt.registerTask('server', ['build:dev', 'express:dev', 'watch:express']);
 };
